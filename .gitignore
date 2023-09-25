@@ -1,0 +1,14 @@
+# Custom
+node/
+.vscode/settings.json
+package/
+.env
+**/*.sql
+*.service-account.json
+kubernetes/deployment.yaml
+package-example/
+**/node_modules/
+.idea/
+
+# QoL for local dev scripts
+*.local.py
