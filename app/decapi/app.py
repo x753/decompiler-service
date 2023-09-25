@@ -20,6 +20,7 @@ async def decompile(file: UploadFile):
         output = await asyncio.create_subprocess_exec(
             "ilspycmd",
             f"{local_copy.name}",
+            "--disable-updatecheck",
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )
