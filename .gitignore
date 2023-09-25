@@ -9,6 +9,7 @@ kubernetes/deployment.yaml
 package-example/
 **/node_modules/
 .idea/
+testdata/
 
 # QoL for local dev scripts
 *.local.py

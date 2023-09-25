@@ -16,6 +16,14 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
-COPY ./app ./app
+COPY ./app/pyproject.toml ./app/poetry.lock ./
 
-ENTRYPOINT ["python", "/app/app/docker_entrypoint.py"]
+RUN pip install -U pip setuptools wheel virtualenv==20.7.2 poetry~=1.4.2 --no-cache-dir && \
+    poetry config virtualenvs.create false && \
+    poetry config installer.max-workers 1 && \
+    poetry install && \
+    rm -rf ~/.cache
+
+COPY ./app ./
+
+ENTRYPOINT ["python", "/app/docker_entrypoint.py"]
