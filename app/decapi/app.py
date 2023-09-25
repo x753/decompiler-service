@@ -6,6 +6,11 @@ from fastapi import FastAPI, UploadFile
 app = FastAPI()
 
 
+@app.get("/healthz")
+async def healthz():
+    return "OK"
+
+
 @app.post("/decompile/")
 async def decompile(file: UploadFile):
     with tempfile.NamedTemporaryFile() as local_copy:
