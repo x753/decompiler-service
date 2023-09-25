@@ -11,7 +11,6 @@ RUN \
     dotnet tool install ilspycmd -g && \
     rm -rf /var/lib/apt/lists/*
 
-ENV PATH "${PATH}:/root/.dotnet/tools"
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
@@ -25,5 +24,9 @@ RUN pip install -U pip setuptools wheel virtualenv==20.7.2 poetry~=1.4.2 --no-ca
     rm -rf ~/.cache
 
 COPY ./app ./
+
+ENV PATH "${PATH}:/usr/local/bin/tools"
+RUN adduser appuser && cp -r /root/.dotnet/tools /usr/local/bin/tools && chmod 755 /usr/local/bin/tools -R
+USER appuser
 
 ENTRYPOINT ["python", "/app/docker_entrypoint.py"]

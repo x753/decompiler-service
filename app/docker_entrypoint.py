@@ -104,7 +104,7 @@ def dump_env() -> None:
                 if var.value is not None
             ]
         )
-    with open("/var/run/app-launch.json", "w") as f:
+    with open("/home/appuser/app-launch.json", "w") as f:
         f.write(json.dumps({k: str(v) for k, v in VARIABLES.items()}))
 
 
