@@ -7,7 +7,7 @@ RUN \
     dpkg -i packages-microsoft-prod.deb && \
     rm packages-microsoft-prod.deb && \
     apt update && \
-    apt install -y dotnet-sdk-6.0 && \
+    apt install -y dotnet-sdk-8.0 && \
     dotnet tool install ilspycmd -g && \
     rm -rf /var/lib/apt/lists/*
 
